@@ -1,0 +1,36 @@
+main .list table {
+  text-align: left;
+  color: #181818;
+}
+
+main .list table thead tr,
+main .list table tbody td {
+  height: 50px;
+  width: 1100px;
+}
+
+main .list table tbody td {
+  padding-left: 14px;
+  font-weight: 400;
+}
+
+main .list table th {
+  background-color: #cafaed;
+  padding-left: 14px;
+}
+
+main .list table #th-1 {
+  width: 405px;
+}
+
+main .list table #th-2 {
+  width: 284px;
+}
+
+main .list table #th-3 {
+  width: 246px;
+}
+
+main .list table #th-4 {
+  /* width: 405px; */
+}

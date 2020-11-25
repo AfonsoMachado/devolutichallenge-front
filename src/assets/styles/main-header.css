@@ -1,0 +1,35 @@
+main {
+  padding-left: 130px;
+  padding-right: 130px;
+}
+
+main .main-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 136px;
+}
+
+main .main-header h2 {
+  color: #181818;
+}
+
+main .main-header button {
+  background-color: #158467;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 26px;
+  color: #dddddd;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+main .main-header button:hover {
+  background-color: #159784;
+}

@@ -1,0 +1,23 @@
+header {
+  height: 80px;
+  padding-left: 130px;
+  padding-right: 130px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #158467;
+}
+
+header a {
+  text-decoration: none;
+  font-weight: 400;
+  color: #dddddd;
+  margin-left: 36px;
+}
+
+a:hover {
+  text-decoration: none;
+  font-weight: 600;
+}

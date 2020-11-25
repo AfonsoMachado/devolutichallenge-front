@@ -1,0 +1,134 @@
+import React, { FormEvent, useEffect, useState } from "react";
+
+import "../../assets/styles/main-header.css";
+import "../../assets/styles/table.css";
+import "./styles.css";
+
+import Modal from "react-modal";
+import api from "../../services/api";
+import Header from "../../components/Header";
+
+Modal.setAppElement("#root");
+
+interface Provider {
+  id: number;
+  name: string;
+  document: string;
+  uf: string;
+}
+
+const Providers: React.FC = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [providers, setProviders] = useState([]);
+
+  const [name, setName] = useState("");
+  const [document, setDocument] = useState("");
+
+  useEffect(() => {
+    getProviders();
+  }, []);
+
+  async function getProviders() {
+    const response = await api.get("/providers");
+    console.log(response.data);
+
+    setProviders(response.data);
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    await api.post("/providers", { name, document });
+    alert("Cadastro realizado com sucesso!");
+    // setModalIsOpen(false);
+  }
+
+  return (
+    <div id="providers">
+      <Modal
+        id="modal"
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: "#00000080",
+          },
+          content: {
+            width: 697,
+            height: 310,
+            color: "#181818",
+            margin: "auto",
+          },
+        }}
+      >
+        <h2>Cadastrar Fornecedor</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-block">
+            <label htmlFor="name">Nome</label>
+            <input
+              placeholder="Insira o nome do fornecedor"
+              id="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </div>
+          <div className="input-block" id="double">
+            <div>
+              <label htmlFor="document">CNPJ</label>
+              <input
+                id="document"
+                value={document}
+                onChange={(event) => setDocument(event.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="category">Categoria</label>
+              <input />
+            </div>
+          </div>
+          <div className="button">
+            <button type="submit">Cadastrar</button>
+          </div>
+        </form>
+      </Modal>
+      <div className="wrapper">
+        <Header />
+
+        <main>
+          <div className="main-header">
+            <h2>Fornecedores</h2>
+            <button onClick={() => setModalIsOpen(true)}>
+              Cadastrar Fornecedor
+            </button>
+          </div>
+          <div className="list">
+            <table>
+              <thead>
+                <tr>
+                  <th id="th-1">Nome</th>
+                  <th id="th-2">CNPJ</th>
+                  <th id="th-2">Categoria</th>
+                  <th id="th-2">Total de Produtos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {providers.map((provider: Provider) => {
+                  return (
+                    <tr key={provider.id}>
+                      <td>{provider.name}</td>
+                      <td>{provider.document}</td>
+                      <td>Alimentos</td>
+                      <td>85</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default Providers;
