@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 
 import "../../assets/styles/main-header.css";
 import "../../assets/styles/table.css";
+import "../../assets/styles/modal.css";
 import "./styles.css";
 
 import Modal from "react-modal";
@@ -97,7 +98,7 @@ const Providers: React.FC = () => {
         <main>
           <div className="main-header">
             <h2>Fornecedores</h2>
-            <button onClick={() => setModalIsOpen(true)}>
+            <button className="btn" onClick={() => setModalIsOpen(true)}>
               Cadastrar Fornecedor
             </button>
           </div>

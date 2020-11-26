@@ -64,6 +64,11 @@
       "name": "testse",
       "document": "443545634563456",
       "id": 11
+    },
+    {
+      "name": "tteste",
+      "document": "0000000000000000",
+      "id": 12
     }
   ],
   "products": [
@@ -136,6 +141,18 @@
       "code": "2789887",
       "category": "Bebidas",
       "provider_id": 5
+    },
+    {
+      "name": "Teste",
+      "code": "156153153",
+      "category": "alguma",
+      "id": 11
+    },
+    {
+      "name": "teste",
+      "code": "546456456456",
+      "category": "hgdfg",
+      "id": 12
     }
   ]
 }

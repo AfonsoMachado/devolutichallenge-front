@@ -16,7 +16,7 @@ main .main-header h2 {
   color: #181818;
 }
 
-main .main-header button {
+main .main-header button.btn {
   background-color: #158467;
   box-sizing: border-box;
   cursor: pointer;
@@ -30,6 +30,6 @@ main .main-header button {
   transition: background-color 0.3s;
 }
 
-main .main-header button:hover {
+main .main-header button.btn:hover {
   background-color: #159784;
 }

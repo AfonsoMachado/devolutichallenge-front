@@ -2,3 +2,12 @@
   width: 100vw;
   height: 100vh;
 }
+
+main .main-header .filter {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  margin-right: 40px;
+}
