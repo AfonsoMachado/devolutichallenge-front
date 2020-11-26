@@ -11,7 +11,6 @@ import "./styles.css";
 import api from "../../services/api";
 
 import filter from "../../assets/images/filter.svg";
-import { useHistory } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -29,8 +28,6 @@ interface Provider {
 }
 
 const Products: React.FC = () => {
-  const history = useHistory();
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalFilterIsOpen, setModalFilterIsOpen] = useState(false);
 
@@ -39,7 +36,7 @@ const Products: React.FC = () => {
 
   const [provider, setProvider] = useState("");
   const [providerFilter, setProviderFilter] = useState("");
-  const [provider_id, setProviderId] = useState(0);
+  // const [provider_id, setProviderId] = useState(0);
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [category, setCategory] = useState("");
@@ -65,10 +62,21 @@ const Products: React.FC = () => {
 
   async function handleSubmit(e: FormEvent) {
     // e.preventDefault();
+    const aux = provider;
+    let provider_id;
 
-    await api.post("/products", { name, code, category });
+    providers.filter((provider: Provider) => {
+      if (provider.name === aux) {
+        provider_id = provider.id;
+        return true;
+      }
+      return false;
+    });
+
+    console.log(provider_id);
+
+    await api.post("/products", { name, code, category, provider_id });
     alert("Cadastro realizado com sucesso!");
-    // history.push("/products");
   }
 
   return (

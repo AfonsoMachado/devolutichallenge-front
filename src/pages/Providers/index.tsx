@@ -37,7 +37,7 @@ const Providers: React.FC = () => {
   }
 
   async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
+    // e.preventDefault();
 
     await api.post("/providers", { name, document });
     alert("Cadastro realizado com sucesso!");

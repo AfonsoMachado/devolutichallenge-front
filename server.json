@@ -69,6 +69,20 @@
       "name": "tteste",
       "document": "0000000000000000",
       "id": 12
+    },
+    {
+      "name": "tsete",
+      "code": "234564325",
+      "category": "Lazer",
+      "provider_id": 10,
+      "id": 13
+    },
+    {
+      "name": "testes 3",
+      "code": "2323424234",
+      "category": "Limpeza",
+      "provider_id": 3,
+      "id": 14
     }
   ],
   "products": [
@@ -153,6 +167,13 @@
       "code": "546456456456",
       "category": "hgdfg",
       "id": 12
+    },
+    {
+      "name": "324345345345",
+      "code": "3234234324",
+      "category": "sdfsdffsd",
+      "provider_id": 3,
+      "id": 13
     }
   ]
 }
