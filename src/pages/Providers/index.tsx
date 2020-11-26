@@ -18,22 +18,70 @@ interface Provider {
   uf: string;
 }
 
+interface Product {
+  id: number;
+  name: string;
+  code: string;
+  category: string;
+  provider_id: number;
+}
+
 const Providers: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [providers, setProviders] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  const [qtdProducts, setQtdProducts] = useState([]);
 
   const [name, setName] = useState("");
   const [document, setDocument] = useState("");
 
   useEffect(() => {
     getProviders();
+    getProducts();
+
+    // getProviderQtd(3);
+
+    // providers.map((provider: Provider) => {
+    //   products.map((product: Product) => {
+    //     if (provider.id === product.provider_id) {
+    //       setQtdProductsByProvider(provider.id);
+    //     }
+    //   });
+    // });
   }, []);
+
+  // async function getProviderQtd(id: number) {
+  //   const response = await api.get(`/providers/${id}`);
+  //   if (response.data.qtd === undefined) return 0;
+  //   return response.data.qtd;
+  // }
+
+  // async function setQtdProductsByProvider(id: number) {
+  //   const providerAtual = await getProvider(id);
+  //   // console.log(providerAtual);
+  //   let qtdAtual = await getProviderQtd(id);
+  //   qtdAtual++;
+  //   providerAtual.qtd = qtdAtual;
+
+  //   console.log(providerAtual);
+  //   const response = await api.put(`/providers/${id}`, providerAtual);
+  // }
+
+  async function getProvider(id: number) {
+    const response = await api.get(`/providers/${id}`);
+    return response.data;
+  }
 
   async function getProviders() {
     const response = await api.get("/providers");
-    console.log(response.data);
-
     setProviders(response.data);
+  }
+
+  async function getProducts() {
+    const response = await api.get("/products");
+    setProducts(response.data);
   }
 
   async function handleSubmit(e: FormEvent) {
